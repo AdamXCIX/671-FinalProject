@@ -25,9 +25,15 @@ public class Jar : MonoBehaviour
 
         if (other.tag == "PlayerWeapon") //Player breaks jar
         {
+            PlayAudio("event:/SFX/Player/Player_BreakJar");
             SpawnPickup();
             Destroy(gameObject);
         }
+    }
+
+    private void PlayAudio(string path) //Plays audio found at path
+    {
+        FMODUnity.RuntimeManager.PlayOneShot(path);
     }
 
     //------------------------Other------------------------

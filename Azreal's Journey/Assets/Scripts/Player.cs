@@ -99,14 +99,13 @@ public class Player : Character
 
         UpdateAnimation(); //Starts character animation
 
+        //Sets Player's low health parameter and starts event
         instance = FMODUnity.RuntimeManager.CreateInstance(lowHealthEvent);
-
-        FMOD.Studio.EventDescription lowHealthEventDesc;
-        instance.getDescription(out lowHealthEventDesc);
-        FMOD.Studio.PARAMETER_DESCRIPTION lowHealthParamDesc;
-        lowHealthEventDesc.getParameterDescriptionByName("PlayerHealth", out lowHealthParamDesc);
-        lowHealthParamId = lowHealthParamDesc.id;
         instance.start();
+
+        FMOD.Studio.PARAMETER_DESCRIPTION lowHealthParamDesc;
+        FMODUnity.RuntimeManager.StudioSystem.getParameterDescriptionByName("PlayerHealth", out lowHealthParamDesc);
+        lowHealthParamId = lowHealthParamDesc.id;
     }
 
     // Update is called once per frame
@@ -235,7 +234,7 @@ public class Player : Character
 
 
         //Sets Audio Parameters
-        instance.setParameterByID(lowHealthParamId, health / maxHealth);
+        FMODUnity.RuntimeManager.StudioSystem.setParameterByID(lowHealthParamId, health / maxHealth);
     }
 
     protected override void UpdateAnimation() //Updates animation if state changes
@@ -304,6 +303,12 @@ public class Player : Character
         keepHoldingState = false;
     }
 
+    //------------------------Audio------------------------
+    private void PlayAudio(string path) //Plays audio found at path
+    {
+        FMODUnity.RuntimeManager.PlayOneShot(path);
+    }
+
     //------------------------Basic Controls------------------------
     protected override void Move(float speed) //Moves the player horizontally
     {
@@ -319,6 +324,7 @@ public class Player : Character
 
     protected void MeleeAttack() //Melee Attack
     {
+        PlayAudio("event:/SFX/Player/Player_Attack");
         Vector3 pos = gameObject.transform.position;
 
         pos.z = gameObject.transform.position.z + 1;
@@ -359,6 +365,7 @@ public class Player : Character
 
     protected void RangedAttack() //Ranged Attack
     {
+        PlayAudio("event:/SFX/Player/Player_Shoot");
         Vector3 pos = gameObject.transform.position;
 
         if (dirState == DirectionState.Left || dirState == DirectionState.Right)
@@ -401,6 +408,7 @@ public class Player : Character
 
     protected void ChargeAttack() //Charge Attack
     {
+        PlayAudio("event:/SFX/Player/Player_StrongAttack");
         Vector3 pos = gameObject.transform.position;
         GameObject weapon = Instantiate(strongWeaponPrefab, pos, gameObject.transform.rotation); //Creates a strong weapon
         weapon.transform.parent = gameObject.transform;
@@ -513,10 +521,33 @@ public class Player : Character
             }
             else if (other.tag == "Lock") //Player touches a locked door
             {
-                if (keys > 0)
+                Door doorScript = other.GetComponent<Door>();
+                if (doorScript)
                 {
-                    ChangeKeys(-1);
-                    other.GetComponent<Door>().OpenDoor();
+                    if (doorScript.Locked && keys > 0)
+                    {
+                        ChangeKeys(-1);
+                        other.GetComponent<Door>().OpenDoor();
+                        PlayAudio("event:/SFX/Game/Game_OpenDoor");
+                    }
+                }
+            }
+        }
+    }
+
+    protected virtual void OnTriggerEnter2D(Collider2D collision) //Handles collisions between player and non-physical GameObjects
+    {
+        GameObject other = collision.gameObject;
+        
+        if (other.tag == "Switch") //Player steps on switch
+        {
+            Switch switchScript = other.GetComponent<Switch>();
+            if (switchScript)
+            {
+                if (!switchScript.Activated)
+                {
+                    switchScript.Activate();
+                    PlayAudio("event:/SFX/Game/Game_PressSwitch");
                 }
             }
         }
@@ -532,12 +563,20 @@ public class Player : Character
             Pickup pickupScript = other.GetComponent<Pickup>();
             if (pickupScript)
             {
-                if (pickupScript.Type == PickupType.Health)
-                    ChangeHealth(pickupScript.Value);
-                else if (pickupScript.Type == PickupType.Ammo)
-                    ChangeAmmo(pickupScript.Value);
+                if (pickupScript.Type == PickupType.Health || pickupScript.Type == PickupType.Ammo)
+                {
+                    if (pickupScript.Type == PickupType.Health)
+                        ChangeHealth(pickupScript.Value);
+                    else
+                        ChangeAmmo(pickupScript.Value);
+
+                    PlayAudio("event:/SFX/Player/Player_GrabPotion");
+                }
                 else if (pickupScript.Type == PickupType.Key)
+                {
                     ChangeKeys(pickupScript.Value);
+                    PlayAudio("event:/SFX/Player/Player_GrabKey");
+                }
             }
             Destroy(other);
         }
@@ -565,6 +604,8 @@ public class Player : Character
 
                 if (!blockProjectile)
                     TakeDamage(projScript.Damage, collisionDirection); //Gives player damage and knockback
+                else
+                    PlayAudio("event:/SFX/Player/Player_Block");
 
                 /*//Player blocks projectile
                 if (state == PlayerState.Idle &&
@@ -608,11 +649,13 @@ public class Player : Character
     {
         ChangeHealth(-value);
 
+
         if (charging) //Stops player from charging
             charging = false;
 
-        if (health > 0)
+        if (!isDead)
         {
+            PlayAudio("event:/SFX/Player/Player_TakeDamage");
             StartCoroutine(Flash(1.0f, 0.09f));
             StartCoroutine(TakeKnockBack(0.1f, kbDirection));
         }

@@ -25,7 +25,7 @@ public class Switch : MonoBehaviour
         
     }
 
-    protected virtual void OnTriggerEnter2D(Collider2D collision) //Handles collisions between switch and non-physical GameObjects
+    /*protected virtual void OnTriggerEnter2D(Collider2D collision) //Handles collisions between switch and non-physical GameObjects
     {
         GameObject other = collision.gameObject;
 
@@ -33,7 +33,7 @@ public class Switch : MonoBehaviour
         {
             Activate();
         }
-    }
+    }*/
 
     public void Deactivate()
     {

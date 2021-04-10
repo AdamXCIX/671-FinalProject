@@ -38,23 +38,21 @@ public class RoomManager : MonoBehaviour
         doors = new List<GameObject>();
 
         for (int i = 0; i < switchParent.transform.childCount; i++) //Creates list of switches from parent GameObject
-        {
             switches.Add(switchParent.transform.GetChild(i).gameObject);
-        }
 
         for (int i = 0; i < enemyParent.transform.childCount; i++) //Creates list of enemies from parent GameObject
-        {
             enemies.Add(enemyParent.transform.GetChild(i).gameObject);
-        }
 
         for (int i = 0; i < bossParent.transform.childCount; i++) //Creates list of bosses from parent GameObject
-        {
             bosses.Add(bossParent.transform.GetChild(i).gameObject);
-        }
 
         for (int i = 0; i < doorParent.transform.childCount; i++) //Creates list of doors from parent GameObject
-        {
             doors.Add(doorParent.transform.GetChild(i).gameObject);
+
+        if ((clearCondition == ClearCondition.Enemy && enemies.Count == 0) || (clearCondition == ClearCondition.Boss && bosses.Count == 0) || 
+            (clearCondition == ClearCondition.Switch && switches.Count == 0)) //Room is cleared by default if corresponding list is empty
+        {
+            cleared = true;
         }
     }
 
@@ -68,7 +66,7 @@ public class RoomManager : MonoBehaviour
                 if (enemies.Count <= 0)
                     cleared = true;
             }
-            if (clearCondition == ClearCondition.Boss) //Room clears when bosses are defeated
+            else if (clearCondition == ClearCondition.Boss) //Room clears when bosses are defeated
             {
                 if (bosses.Count <= 0)
                     cleared = true;
@@ -96,9 +94,14 @@ public class RoomManager : MonoBehaviour
                 {
                     doors[i].GetComponent<Door>().OpenDoor();
                 }
+                PlayAudio("event:/SFX/Game/Game_OpenDoor");
+
 
                 if (spawnKey)
+                {
                     Instantiate(keyPrefab, keySpawn.transform.position, gameObject.transform.rotation);
+                    PlayAudio("event:/SFX/Game/Game_SpawnKey");
+                }
             }
 
         }
@@ -140,5 +143,11 @@ public class RoomManager : MonoBehaviour
             if (enemyScript)
                 enemyScript.Reset();
         }
+    }
+
+    //------------------------Audio------------------------
+    private void PlayAudio(string path) //Plays audio found at path
+    {
+        FMODUnity.RuntimeManager.PlayOneShot(path);
     }
 }

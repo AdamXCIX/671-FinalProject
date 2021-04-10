@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.01.00">
-	<object class="AudioFile" id="{ed2a6d4b-165e-47b3-aed5-93c619193e79}">
+	<object class="AudioFile" id="{8a1ae11c-1012-430a-abe5-6d4a5b5797ba}">
 		<property name="assetPath">
-			<value>Player_LowHealth.wav</value>
+			<value>Player_GrabPotion.wav</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>
@@ -11,7 +11,7 @@
 			<value>2</value>
 		</property>
 		<property name="length">
-			<value>1.6249886621315193</value>
+			<value>0.75070294784580494</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{c9f006aa-0889-40e1-96ec-437f3eb10bb4}</destination>
