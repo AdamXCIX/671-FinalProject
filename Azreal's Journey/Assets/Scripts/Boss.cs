@@ -90,6 +90,7 @@ public class Boss : RangedEnemy
 
     protected override void RangedAttack() //Ranged Attack
     {
+        PlayAudio("event:/SFX/Enemy/Boss/Boss_Shoot");
         Vector3 pos = gameObject.transform.position;
 
         pos.z = gameObject.transform.position.z - 1;

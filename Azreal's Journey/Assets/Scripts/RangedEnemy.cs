@@ -104,6 +104,8 @@ public class RangedEnemy : Enemy
 
     protected virtual void RangedAttack() //Ranged Attack
     {
+        PlayAudio("event:/SFX/Enemy/Enemy3/Enemy3_Shoot");
+
         Vector3 pos = gameObject.transform.position;
 
         pos.z = gameObject.transform.position.z + 1;

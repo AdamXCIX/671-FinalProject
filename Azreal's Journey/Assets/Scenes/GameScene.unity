@@ -6030,7 +6030,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnKey: 0
-  clearCondition: 0
+  clearCondition: 3
   switchParent: {fileID: 578608866}
   enemyParent: {fileID: 1395975937}
   bossParent: {fileID: 1989435088}
@@ -7766,7 +7766,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8974666686339797353, guid: 6e65d061d5ef9e04f9ea8c539a950b49, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8974666686339797353, guid: 6e65d061d5ef9e04f9ea8c539a950b49, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -28978,6 +28978,10 @@ PrefabInstance:
       propertyPath: startingRoom
       value: 
       objectReference: {fileID: 393574136}
+    - target: {fileID: 5068687660466396740, guid: 04ec66b0c53798f46b02ebb4d6211485, type: 3}
+      propertyPath: titleDuration
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5068687660466396741, guid: 04ec66b0c53798f46b02ebb4d6211485, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

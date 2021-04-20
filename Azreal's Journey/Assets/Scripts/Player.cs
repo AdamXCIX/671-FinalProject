@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMOD.Studio;
 
 public enum PlayerState
 {
@@ -52,10 +53,9 @@ public class Player : Character
 
 
     //Audio Variables
-    private FMOD.Studio.EventInstance instance;
+    private EventInstance lowHealthSound;
     [FMODUnity.EventRef]
-    private string lowHealthEvent = "event:/Interface/Player_LowHealth";
-    private FMOD.Studio.PARAMETER_ID lowHealthParamId;
+    private PARAMETER_ID lowHealthParamId;
 
     public float MaxHealth
     {
@@ -100,10 +100,10 @@ public class Player : Character
         UpdateAnimation(); //Starts character animation
 
         //Sets Player's low health parameter and starts event
-        instance = FMODUnity.RuntimeManager.CreateInstance(lowHealthEvent);
-        instance.start();
+        lowHealthSound = FMODUnity.RuntimeManager.CreateInstance("event:/Interface/Player_LowHealth");
+        //lowHealthEffect.start();
 
-        FMOD.Studio.PARAMETER_DESCRIPTION lowHealthParamDesc;
+        PARAMETER_DESCRIPTION lowHealthParamDesc;
         FMODUnity.RuntimeManager.StudioSystem.getParameterDescriptionByName("PlayerHealth", out lowHealthParamDesc);
         lowHealthParamId = lowHealthParamDesc.id;
     }
@@ -307,6 +307,13 @@ public class Player : Character
     private void PlayAudio(string path) //Plays audio found at path
     {
         FMODUnity.RuntimeManager.PlayOneShot(path);
+    }
+
+    private bool IsAudioPlaying(EventInstance instance) //Returns whether the passed event is currently playing
+    {
+        PLAYBACK_STATE state;
+        instance.getPlaybackState(out state);
+        return state != PLAYBACK_STATE.STOPPED;
     }
 
     //------------------------Basic Controls------------------------
@@ -591,15 +598,18 @@ public class Player : Character
                 Vector2 otherPos = other.transform.position; //Position of player
                 bool blockProjectile = false;
 
-                if (Mathf.Abs(collisionDirection.y) / height >= Mathf.Abs(collisionDirection.x) / width) //Player blocks projectile from top or bottom
+                if (state == PlayerState.Idle || state == PlayerState.Walk) //Player can block projectiles while idle
                 {
-                    if ((otherPos.y >= pos.y && dirState == DirectionState.Up) || (otherPos.y <= pos.y && dirState == DirectionState.Down))
-                        blockProjectile = true;
-                }
-                else if (Mathf.Abs(collisionDirection.x) / width > Mathf.Abs(collisionDirection.y) / height) //Player blocks projectile from left or right
-                {
-                    if ((otherPos.x >= pos.x && dirState == DirectionState.Right) || (otherPos.x <= pos.x && dirState == DirectionState.Left))
-                        blockProjectile = true;
+                    if (Mathf.Abs(collisionDirection.y) / height >= Mathf.Abs(collisionDirection.x) / width) //Player blocks projectile from top or bottom
+                    {
+                        if ((otherPos.y >= pos.y && dirState == DirectionState.Up) || (otherPos.y <= pos.y && dirState == DirectionState.Down))
+                            blockProjectile = true;
+                    }
+                    else if (Mathf.Abs(collisionDirection.x) / width > Mathf.Abs(collisionDirection.y) / height) //Player blocks projectile from left or right
+                    {
+                        if ((otherPos.x >= pos.x && dirState == DirectionState.Right) || (otherPos.x <= pos.x && dirState == DirectionState.Left))
+                            blockProjectile = true;
+                    }
                 }
 
                 if (!blockProjectile)
@@ -643,6 +653,14 @@ public class Player : Character
         }
         else //Raises or lowers health
             health += value;
+
+        
+        if (health / maxHealth <= 0.5f && !IsAudioPlaying(lowHealthSound)) //Start sound when health drops below 50%
+            lowHealthSound.start();
+        else if (health / maxHealth > 0.5f && IsAudioPlaying(lowHealthSound)) //Fade sound out when health rises above 50%
+            lowHealthSound.stop(STOP_MODE.ALLOWFADEOUT);
+        else if (isDead && IsAudioPlaying(lowHealthSound)) //Stop sound when dead
+            lowHealthSound.stop(STOP_MODE.IMMEDIATE);
     }
 
     public override void TakeDamage(float value, Vector2 kbDirection) //Decreases player's health and Handles knockback

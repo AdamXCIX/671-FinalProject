@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.01.00">
 	<object class="AudioFile" id="{5f73ebe4-403c-40e2-aa9f-6c7970fa169e}">
 		<property name="assetPath">
-			<value>Player_Block.wav</value>
+			<value>SFX/Player/Player_Block.wav</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>
@@ -11,7 +11,7 @@
 			<value>2</value>
 		</property>
 		<property name="length">
-			<value>0.75070294784580494</value>
+			<value>1.9984126984126984</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{c9f006aa-0889-40e1-96ec-437f3eb10bb4}</destination>

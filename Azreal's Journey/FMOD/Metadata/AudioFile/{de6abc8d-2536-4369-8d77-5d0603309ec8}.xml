@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.01.00">
 	<object class="AudioFile" id="{de6abc8d-2536-4369-8d77-5d0603309ec8}">
 		<property name="assetPath">
-			<value>Player_LowHealth_Systole.wav</value>
+			<value>Interface/Player_LowHealth_Systole.wav</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>

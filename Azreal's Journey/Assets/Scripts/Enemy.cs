@@ -125,6 +125,12 @@ public class Enemy : Character
             animator.Play("Amdusias_Walk_Down");
     }
 
+    //------------------------Audio------------------------
+    protected void PlayAudio(string path) //Plays audio found at path
+    {
+        FMODUnity.RuntimeManager.PlayOneShot(path);
+    }
+
 
     //------------------------Changing State------------------------
     protected void ChangeEnemyState(EnemyState newState) //Changes current player state and records previous one
@@ -176,7 +182,7 @@ public class Enemy : Character
 
         if (other.layer == LayerMask.NameToLayer("Obstacle")) //Enemy runs into wall
         {
-            List<Vector2> wallDirections = GetObstacleCollisionDirections(halfWidthX + 0.05f, halfWidthY + 0.05f);
+            List<Vector2> wallDirections = GetObstacleCollisionDirections(halfWidthX + 0.25f, halfWidthY + 0.25f);
             SetRandomDirection(); //Sets a new random direction
             while ((dirState == DirectionState.Up && wallDirections.Contains(Vector2.up)) ||
                 (dirState == DirectionState.Down && wallDirections.Contains(Vector2.down)) ||
@@ -206,7 +212,7 @@ public class Enemy : Character
         GameObject other = collision.gameObject;
         Vector2 collisionDirection = (transform.position - other.transform.position).normalized;
 
-        if (other.tag == "Enemy") //Enemy touches another enemy
+        if (other.tag == "Enemy" || other.tag == "Player") //Enemy touches another enemy or the player
         {
             Vector2 collisionAxis = GetNearestAxis2D(-collisionDirection);
 
@@ -243,6 +249,34 @@ public class Enemy : Character
                     TakeDamage(wpnScript.Damage, collisionDirection); //Gives enemy damage and knockback
                 }
             }
+    }
+
+    public override void TakeDamage(float damage, Vector2 kbDirection) //Gives enemy damage and knockback
+    {
+        base.TakeDamage(damage, kbDirection); //Call parent TakeDamage method
+
+        if (!isDead) //Play hurt sound if not dead
+        {
+            if (GetComponent<Boss>())
+                PlayAudio("event:/SFX/Enemy/Boss/Boss_TakeDamage"); //Play Boss audio
+            else if (GetComponent<RangedEnemy>())
+                PlayAudio("event:/SFX/Enemy/Enemy3/Enemy3_TakeDamage"); //Play Ranged Enemy audio
+            else if (GetComponent<SeekingEnemy>())
+                PlayAudio("event:/SFX/Enemy/Enemy2/Enemy2_TakeDamage"); //Play Seeking Enemy audio
+            else
+                PlayAudio("event:/SFX/Enemy/Enemy1/Enemy1_TakeDamage"); //Play Standard Enemy audio
+        }
+        else //Play defeated sound if dead
+        {
+            if (GetComponent<Boss>())
+                PlayAudio("event:/SFX/Enemy/Boss/Boss_Defeated"); //Play Boss audio
+            else if (GetComponent<RangedEnemy>())
+                PlayAudio("event:/SFX/Enemy/Enemy3/Enemy3_Defeated"); //Play Ranged Enemy audio
+            else if (GetComponent<SeekingEnemy>())
+                PlayAudio("event:/SFX/Enemy/Enemy2/Enemy2_Defeated"); //Play Seeking Enemy audio
+            else
+                PlayAudio("event:/SFX/Enemy/Enemy1/Enemy1_Defeated"); //Play Standard Enemy audio
+        }
     }
 
     //------------------------Other------------------------

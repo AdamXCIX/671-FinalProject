@@ -6,7 +6,8 @@ public enum ClearCondition
 {
     Enemy,
     Switch,
-    Boss
+    Boss,
+    None
 }
 public class RoomManager : MonoBehaviour
 {
@@ -26,6 +27,11 @@ public class RoomManager : MonoBehaviour
     [SerializeField] private GameObject keySpawn;
 
     private bool cleared;
+
+    public ClearCondition Condition
+    {
+        get { return clearCondition; }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -69,7 +75,10 @@ public class RoomManager : MonoBehaviour
             else if (clearCondition == ClearCondition.Boss) //Room clears when bosses are defeated
             {
                 if (bosses.Count <= 0)
+                {
                     cleared = true;
+                    GameManager.instance.PlayDungeonMusic();
+                }
             }
             else if (clearCondition == ClearCondition.Switch) //Room clears when switches are defeated
             {
@@ -87,6 +96,8 @@ public class RoomManager : MonoBehaviour
                 if (allActivated) //All switches must be actiavted to clear
                     cleared = true;
             }
+            else //Room has no clear condition and opens by default
+                cleared = true;
 
             if (cleared)
             {
@@ -94,7 +105,9 @@ public class RoomManager : MonoBehaviour
                 {
                     doors[i].GetComponent<Door>().OpenDoor();
                 }
-                PlayAudio("event:/SFX/Game/Game_OpenDoor");
+
+                if (GameManager.instance.StartingRoom != gameObject) //Don't play opening noise for first room
+                    PlayAudio("event:/SFX/Game/Game_OpenDoor");
 
 
                 if (spawnKey)

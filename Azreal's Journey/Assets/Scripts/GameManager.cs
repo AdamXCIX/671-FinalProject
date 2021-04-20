@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using FMOD.Studio;
 
 public enum GameState
 {
@@ -15,6 +16,8 @@ public enum GameState
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance = null;
+
     [SerializeField] private float titleDuration;
 
     private GameObject player;
@@ -40,6 +43,23 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject winButtons;
 
     private GameState state;
+    private EventInstance titleMusic;
+    private EventInstance menuMusic;
+    private EventInstance dungeonMusic;
+    private EventInstance bossMusic;
+
+    public GameObject StartingRoom
+    {
+        get { return startingRoom; }
+    }
+
+    private void Awake()
+    {
+        if (instance == null) //Assigns this GameObject to instance if instance is null
+            instance = this;
+        else //Singleton is already instanced
+            Destroy(gameObject);
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -57,6 +77,11 @@ public class GameManager : MonoBehaviour
         {
             rooms.Add(roomsParent.transform.GetChild(i).gameObject);
         }
+
+        titleMusic = FMODUnity.RuntimeManager.CreateInstance("event:/Music/Music_Title");
+        menuMusic = FMODUnity.RuntimeManager.CreateInstance("event:/Music/Music_Menu");
+        dungeonMusic = FMODUnity.RuntimeManager.CreateInstance("event:/Music/Music_Dungeon");
+        bossMusic = FMODUnity.RuntimeManager.CreateInstance("event:/Music/Music_Boss");
 
         GoToTitle();
     }
@@ -116,6 +141,7 @@ public class GameManager : MonoBehaviour
 
     public void GoToTitle()
     {
+        SetMusicImmediate(titleMusic);
         playerScript.Paused = true; //Pauses player
         state = GameState.Menu;
 
@@ -135,6 +161,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame() //Starts game
     {
+        SetMusicImmediate(dungeonMusic);
         state = GameState.Game;
 
         mainMenu.SetActive(false);
@@ -148,6 +175,8 @@ public class GameManager : MonoBehaviour
 
     public void GameOver() //Game Over Screen
     {
+        StopMusicImmediate();
+        PlayAudio("event:/SFX/Game/Game_Defeat");
         state = GameState.GameOver;
 
         mainMenu.SetActive(false);
@@ -175,6 +204,7 @@ public class GameManager : MonoBehaviour
             elapsed += Time.deltaTime;
         }
 
+        SetMusicFadeOut(menuMusic);
         gameOverTitle.SetActive(false);
         gameOverBox.SetActive(true);
         gameOverButtons.SetActive(true);
@@ -184,6 +214,8 @@ public class GameManager : MonoBehaviour
 
     public void Win() //Win Screen
     {
+        StopMusicImmediate();
+        PlayAudio("event:/SFX/Game/Game_Victory");
         state = GameState.Win;
 
         mainMenu.SetActive(false);
@@ -211,6 +243,7 @@ public class GameManager : MonoBehaviour
             elapsed += Time.deltaTime;
         }
 
+        SetMusicFadeOut(menuMusic);
         winTitle.SetActive(false);
         winBox.SetActive(true);
         winButtons.SetActive(true);
@@ -225,6 +258,50 @@ public class GameManager : MonoBehaviour
 
     public void Restart() //Restarts Game
     {
+        StopMusicImmediate();
         SceneManager.LoadScene("GameScene");
+    }
+
+    //------------------------Audio------------------------
+    private void PlayAudio(string path) //Plays audio found at path
+    {
+        FMODUnity.RuntimeManager.PlayOneShot(path);
+    }
+
+    private void SetMusicImmediate(EventInstance current) //Starts current track and stops others immediately
+    {
+        StopMusicImmediate();
+        current.start();
+    }
+
+    private void SetMusicFadeOut(EventInstance current) //Starts current track and allows others to fade out
+    {
+        StopMusicFadeOut();
+        current.start();
+    }
+    private void StopMusicImmediate() //Stops music immediately
+    {
+        titleMusic.stop(STOP_MODE.IMMEDIATE);
+        menuMusic.stop(STOP_MODE.IMMEDIATE);
+        dungeonMusic.stop(STOP_MODE.IMMEDIATE);
+        bossMusic.stop(STOP_MODE.IMMEDIATE);
+    }
+
+    private void StopMusicFadeOut() //Allows music to fade out
+    {
+        titleMusic.stop(STOP_MODE.ALLOWFADEOUT);
+        menuMusic.stop(STOP_MODE.ALLOWFADEOUT);
+        dungeonMusic.stop(STOP_MODE.ALLOWFADEOUT);
+        bossMusic.stop(STOP_MODE.ALLOWFADEOUT);
+    }
+
+    public void PlayDungeonMusic() //Allows Dungeon Music to be started from other scripts
+    {
+        SetMusicFadeOut(dungeonMusic);
+    }
+
+    public void PlayBossMusic() //Allows Boss Music to be started from other scripts
+    {
+        SetMusicFadeOut(bossMusic);
     }
 }

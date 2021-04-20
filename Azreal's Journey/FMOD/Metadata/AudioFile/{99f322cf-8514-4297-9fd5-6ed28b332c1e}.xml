@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.01.00">
 	<object class="AudioFile" id="{99f322cf-8514-4297-9fd5-6ed28b332c1e}">
 		<property name="assetPath">
-			<value>Game_OpenDoor.wav</value>
+			<value>SFX/Game/Game_OpenDoor.wav</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>

@@ -69,6 +69,9 @@ public class Exit : MonoBehaviour
                 player.GetComponent<Player>().Paused = false; //Resumes Player
                 spawnRoomScript.SetPaused(false); //Resumes new room
                 movingRooms = false;
+
+                if (spawnRoomScript.Condition == ClearCondition.Boss) //Plays boss music if in boss room
+                    GameManager.instance.PlayBossMusic();
             }
         }
     }

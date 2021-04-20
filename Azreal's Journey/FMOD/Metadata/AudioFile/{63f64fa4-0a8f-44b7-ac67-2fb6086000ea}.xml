@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.01.00">
 	<object class="AudioFile" id="{63f64fa4-0a8f-44b7-ac67-2fb6086000ea}">
 		<property name="assetPath">
-			<value>Game_SpawnKey.wav</value>
+			<value>SFX/Game/Game_SpawnKey.wav</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>

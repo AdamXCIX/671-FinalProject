@@ -114,7 +114,7 @@ public class SeekingEnemy : Enemy
 
         if (other.layer == LayerMask.NameToLayer("Obstacle")) //Enemy runs into wall
         {
-            List<Vector2> wallDirections = GetObstacleCollisionDirections(halfWidthX + 0.05f, halfWidthY + 0.05f);
+            List<Vector2> wallDirections = GetObstacleCollisionDirections(halfWidthX + 0.25f, halfWidthY + 0.25f);
             SetRandomDirection(); //Sets a new random direction
             while ((dirState == DirectionState.Up && wallDirections.Contains(Vector2.up)) ||
                 (dirState == DirectionState.Down && wallDirections.Contains(Vector2.down)) ||
