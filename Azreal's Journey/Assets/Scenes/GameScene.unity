@@ -3766,6 +3766,7 @@ MonoBehaviour:
   enemyParent: {fileID: 1704336726}
   bossParent: {fileID: 1161588867}
   doorParent: {fileID: 147393329}
+  unlockDelay: 0.5
   keyPrefab: {fileID: 8739443889797261132, guid: 17321575ef3e24a4195365f4403890c4, type: 3}
   keySpawn: {fileID: 1893792681}
 --- !u!1001 &232564176
@@ -5078,6 +5079,7 @@ MonoBehaviour:
   enemyParent: {fileID: 1011374343}
   bossParent: {fileID: 245455735}
   doorParent: {fileID: 1847625906}
+  unlockDelay: 0.5
   keyPrefab: {fileID: 8739443889797261132, guid: 17321575ef3e24a4195365f4403890c4, type: 3}
   keySpawn: {fileID: 1599245060}
 --- !u!1001 &350352804
@@ -6035,6 +6037,7 @@ MonoBehaviour:
   enemyParent: {fileID: 1395975937}
   bossParent: {fileID: 1989435088}
   doorParent: {fileID: 1799423712}
+  unlockDelay: 0.5
   keyPrefab: {fileID: 8739443889797261132, guid: 17321575ef3e24a4195365f4403890c4, type: 3}
   keySpawn: {fileID: 656947021}
 --- !u!1001 &395518307
@@ -12759,6 +12762,7 @@ MonoBehaviour:
   enemyParent: {fileID: 1889934475}
   bossParent: {fileID: 964216332}
   doorParent: {fileID: 1041223618}
+  unlockDelay: 0.5
   keyPrefab: {fileID: 8739443889797261132, guid: 17321575ef3e24a4195365f4403890c4, type: 3}
   keySpawn: {fileID: 313002355}
 --- !u!1001 &935986395
@@ -12886,6 +12890,7 @@ MonoBehaviour:
   enemyParent: {fileID: 1016155905}
   bossParent: {fileID: 1633834341}
   doorParent: {fileID: 545279611}
+  unlockDelay: 0.5
   keyPrefab: {fileID: 8739443889797261132, guid: 17321575ef3e24a4195365f4403890c4, type: 3}
   keySpawn: {fileID: 1823248409}
 --- !u!1001 &959085242
@@ -16409,6 +16414,7 @@ MonoBehaviour:
   enemyParent: {fileID: 1133186477}
   bossParent: {fileID: 1310010170}
   doorParent: {fileID: 2044475635}
+  unlockDelay: 0.5
   keyPrefab: {fileID: 8739443889797261132, guid: 17321575ef3e24a4195365f4403890c4, type: 3}
   keySpawn: {fileID: 125160259}
 --- !u!1 &1199125591
@@ -22079,6 +22085,7 @@ MonoBehaviour:
   enemyParent: {fileID: 1063251714}
   bossParent: {fileID: 527765739}
   doorParent: {fileID: 1887310320}
+  unlockDelay: 0.5
   keyPrefab: {fileID: 8739443889797261132, guid: 17321575ef3e24a4195365f4403890c4, type: 3}
   keySpawn: {fileID: 1522637158}
 --- !u!1001 &1690556202
@@ -25255,6 +25262,7 @@ MonoBehaviour:
   enemyParent: {fileID: 1687504632}
   bossParent: {fileID: 1484423735}
   doorParent: {fileID: 512280595}
+  unlockDelay: 0.5
   keyPrefab: {fileID: 8739443889797261132, guid: 17321575ef3e24a4195365f4403890c4, type: 3}
   keySpawn: {fileID: 1814564881}
 --- !u!1 &1922627315
@@ -26748,6 +26756,7 @@ MonoBehaviour:
   enemyParent: {fileID: 668690024}
   bossParent: {fileID: 1552939377}
   doorParent: {fileID: 1928979843}
+  unlockDelay: 0.5
   keyPrefab: {fileID: 8739443889797261132, guid: 17321575ef3e24a4195365f4403890c4, type: 3}
   keySpawn: {fileID: 499828824}
 --- !u!1001 &1998409848
@@ -28088,6 +28097,7 @@ MonoBehaviour:
   enemyParent: {fileID: 462394450}
   bossParent: {fileID: 1420259457}
   doorParent: {fileID: 390621469}
+  unlockDelay: 0.5
   keyPrefab: {fileID: 8739443889797261132, guid: 17321575ef3e24a4195365f4403890c4, type: 3}
   keySpawn: {fileID: 961124534}
 --- !u!1001 &2092114843

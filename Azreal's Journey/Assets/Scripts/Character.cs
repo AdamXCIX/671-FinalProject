@@ -20,6 +20,15 @@ public class Character : MonoBehaviour
 
     [SerializeField] protected float walkSpeed;
 
+    public float Health
+    {
+        get { return health; }
+    }
+
+    public float MaxHealth
+    {
+        get { return maxHealth; }
+    }
 
     public float Damage
     {

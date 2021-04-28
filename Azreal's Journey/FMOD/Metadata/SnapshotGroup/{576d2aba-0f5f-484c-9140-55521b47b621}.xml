@@ -3,6 +3,7 @@
 	<object class="SnapshotList" id="{576d2aba-0f5f-484c-9140-55521b47b621}">
 		<relationship name="items">
 			<destination>{e6d1e202-3a18-4de5-b2dd-8dc90de44e41}</destination>
+			<destination>{b41ee39f-a53f-4e75-aebf-54383b99d657}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{668600f7-f2f4-42e1-815a-89524ea95815}</destination>

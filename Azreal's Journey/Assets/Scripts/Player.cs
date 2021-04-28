@@ -54,17 +54,9 @@ public class Player : Character
 
     //Audio Variables
     private EventInstance lowHealthSound;
+    private EventInstance footstepSound;
     [FMODUnity.EventRef]
     private PARAMETER_ID lowHealthParamId;
-
-    public float MaxHealth
-    {
-        get { return maxHealth; }
-    }
-    public float Health
-    {
-        get { return health; }
-    }
 
     public float Ammo
     {
@@ -101,11 +93,12 @@ public class Player : Character
 
         //Sets Player's low health parameter and starts event
         lowHealthSound = FMODUnity.RuntimeManager.CreateInstance("event:/Interface/Player_LowHealth");
-        //lowHealthEffect.start();
 
         PARAMETER_DESCRIPTION lowHealthParamDesc;
         FMODUnity.RuntimeManager.StudioSystem.getParameterDescriptionByName("PlayerHealth", out lowHealthParamDesc);
         lowHealthParamId = lowHealthParamDesc.id;
+
+        footstepSound = FMODUnity.RuntimeManager.CreateInstance("event:/SFX/Player/Player_Footsteps");
     }
 
     // Update is called once per frame
@@ -279,6 +272,11 @@ public class Player : Character
     {
         prevState = state; //Updates previous state
         state = newState; //Updates current state
+
+            if (state == PlayerState.Walk && prevState != PlayerState.Walk) //Starts footsteps
+                footstepSound.start();
+            else if (state != PlayerState.Walk && prevState == PlayerState.Walk) //Stops footsteps
+            footstepSound.stop(STOP_MODE.ALLOWFADEOUT);
     }
 
     protected void ChangeDirectionState(DirectionState newState) //Changes current direction state and records previous one

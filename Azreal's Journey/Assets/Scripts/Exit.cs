@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMOD.Studio;
 
 public class Exit : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class Exit : MonoBehaviour
     private RoomManager spawnRoomScript;
     private bool movingRooms;
 
+    private EventInstance enterDoorSound;
 
     // Start is called before the first frame update
     void Start()
@@ -52,6 +54,8 @@ public class Exit : MonoBehaviour
             exitRoomScript = room.GetComponent<RoomManager>();
 
         movingRooms = false;
+
+        enterDoorSound = FMODUnity.RuntimeManager.CreateInstance("event:/SFX/Game/Game_EnterDoor");
     }
 
     // Update is called once per frame
@@ -65,10 +69,13 @@ public class Exit : MonoBehaviour
             if (cameraElapsed / cameraDuration >= 1.0f) //Camera is close enough to target
             {
                 Camera.main.transform.position = targetPos; //Ensures camera is in correct place
+                GameManager.instance.CurrentRoom = spawnScript.Room;
                 player.transform.position = spawnPos; //Moves player to new room
                 player.GetComponent<Player>().Paused = false; //Resumes Player
                 spawnRoomScript.SetPaused(false); //Resumes new room
+
                 movingRooms = false;
+                enterDoorSound.stop(STOP_MODE.ALLOWFADEOUT);
 
                 if (spawnRoomScript.Condition == ClearCondition.Boss) //Plays boss music if in boss room
                     GameManager.instance.PlayBossMusic();
@@ -88,6 +95,7 @@ public class Exit : MonoBehaviour
             startPos = Camera.main.transform.position;
             cameraElapsed = 0;
             movingRooms = true;
+            enterDoorSound.start();
         }
     }
 }

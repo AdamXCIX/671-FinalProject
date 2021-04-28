@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{b8787f63-0254-4e4b-9ea6-b5ef4eea9657}">
+		<property name="assetPath">
+			<value>Music/Music_Dungeon/DungeonMusic_Intro.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>2.2485034013605443</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{c9f006aa-0889-40e1-96ec-437f3eb10bb4}</destination>
+		</relationship>
+	</object>
+</objects>

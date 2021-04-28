@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="ParameterPreset" id="{75dd3081-dd9c-4aa2-96cb-e5ffe47ac174}">
+		<property name="name">
+			<value>SkipMelody3</value>
+		</property>
+		<relationship name="folder">
+			<destination>{37621bb9-baba-4675-960a-746aeb1ad217}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{e790a1be-7067-48c6-a0a9-b269c7030b5e}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{e790a1be-7067-48c6-a0a9-b269c7030b5e}">
+		<property name="parameterType">
+			<value>1</value>
+		</property>
+		<property name="maximum">
+			<value>2</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+		<relationship name="automators">
+			<destination>{bc7886ab-4ae3-46fd-82be-7f7d03b8f407}</destination>
+		</relationship>
+	</object>
+	<object class="Automator" id="{bc7886ab-4ae3-46fd-82be-7f7d03b8f407}">
+		<property name="nameOfPropertyBeingAutomated">
+			<value>cursorPosition</value>
+		</property>
+	</object>
+</objects>

@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject roomsParent;
     private List<GameObject> rooms;
     [SerializeField] private GameObject startingRoom;
+    private GameObject currentRoom;
 
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject menuButtons;
@@ -44,13 +45,30 @@ public class GameManager : MonoBehaviour
 
     private GameState state;
     private EventInstance titleMusic;
-    private EventInstance menuMusic;
     private EventInstance dungeonMusic;
     private EventInstance bossMusic;
+    private EventInstance defeatMusic;
+    private EventInstance victoryMusic;
+
+    [FMODUnity.EventRef]
+    private PARAMETER_ID bossHealthParamId;
+    private float bossHealthPercent;
 
     public GameObject StartingRoom
     {
         get { return startingRoom; }
+    }
+
+    public GameObject CurrentRoom
+    {
+        get { return currentRoom; }
+        set { currentRoom = value; }
+    }
+
+    public float BossHealthPercent
+    {
+        get { return bossHealthPercent; }
+        set { bossHealthPercent = value; }
     }
 
     private void Awake()
@@ -79,9 +97,14 @@ public class GameManager : MonoBehaviour
         }
 
         titleMusic = FMODUnity.RuntimeManager.CreateInstance("event:/Music/Music_Title");
-        menuMusic = FMODUnity.RuntimeManager.CreateInstance("event:/Music/Music_Menu");
         dungeonMusic = FMODUnity.RuntimeManager.CreateInstance("event:/Music/Music_Dungeon");
         bossMusic = FMODUnity.RuntimeManager.CreateInstance("event:/Music/Music_Boss");
+        defeatMusic = FMODUnity.RuntimeManager.CreateInstance("event:/Music/Music_Defeat");
+        victoryMusic = FMODUnity.RuntimeManager.CreateInstance("event:/Music/Music_Victory");
+
+        PARAMETER_DESCRIPTION bossHealthParamDesc;
+        FMODUnity.RuntimeManager.StudioSystem.getParameterDescriptionByName("BossHealth", out bossHealthParamDesc);
+        bossHealthParamId = bossHealthParamDesc.id;
 
         GoToTitle();
     }
@@ -97,8 +120,6 @@ public class GameManager : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
-
-
 
         if (state == GameState.Game && playerScript.IsDead) //Player dies
             GameOver();
@@ -137,11 +158,24 @@ public class GameManager : MonoBehaviour
             if (!btnSelected)
                 winButtons.transform.GetChild(0).GetComponent<ButtonClick>().SelectManually(); //Automatically selects first button
         }
+
+        //Sets Audio Parameters
+        if (currentRoom)
+        {
+            RoomManager roomScript = currentRoom.GetComponent<RoomManager>();
+            if (roomScript)
+            {
+                if (roomScript.Condition == ClearCondition.Boss) //Updates parameter if in boss room
+                    FMODUnity.RuntimeManager.StudioSystem.setParameterByID(bossHealthParamId, BossHealthPercent);
+                else //Resets parameter if not in boss room
+                    FMODUnity.RuntimeManager.StudioSystem.setParameterByID(bossHealthParamId, 1.0f);
+            }
+        }
     }
 
     public void GoToTitle()
     {
-        SetMusicImmediate(titleMusic);
+        StartMusic(titleMusic, STOP_MODE.IMMEDIATE);
         playerScript.Paused = true; //Pauses player
         state = GameState.Menu;
 
@@ -161,7 +195,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame() //Starts game
     {
-        SetMusicImmediate(dungeonMusic);
+        StartMusic(dungeonMusic, STOP_MODE.IMMEDIATE);
         state = GameState.Game;
 
         mainMenu.SetActive(false);
@@ -175,7 +209,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver() //Game Over Screen
     {
-        StopMusicImmediate();
+        StopMusic(STOP_MODE.IMMEDIATE);
         PlayAudio("event:/SFX/Game/Game_Defeat");
         state = GameState.GameOver;
 
@@ -204,7 +238,7 @@ public class GameManager : MonoBehaviour
             elapsed += Time.deltaTime;
         }
 
-        SetMusicFadeOut(menuMusic);
+        StartMusic(defeatMusic, STOP_MODE.ALLOWFADEOUT);
         gameOverTitle.SetActive(false);
         gameOverBox.SetActive(true);
         gameOverButtons.SetActive(true);
@@ -214,7 +248,7 @@ public class GameManager : MonoBehaviour
 
     public void Win() //Win Screen
     {
-        StopMusicImmediate();
+        StopMusic(STOP_MODE.IMMEDIATE);
         PlayAudio("event:/SFX/Game/Game_Victory");
         state = GameState.Win;
 
@@ -243,7 +277,7 @@ public class GameManager : MonoBehaviour
             elapsed += Time.deltaTime;
         }
 
-        SetMusicFadeOut(menuMusic);
+        StartMusic(victoryMusic, STOP_MODE.ALLOWFADEOUT);
         winTitle.SetActive(false);
         winBox.SetActive(true);
         winButtons.SetActive(true);
@@ -258,7 +292,7 @@ public class GameManager : MonoBehaviour
 
     public void Restart() //Restarts Game
     {
-        StopMusicImmediate();
+        StopMusic(STOP_MODE.IMMEDIATE);
         SceneManager.LoadScene("GameScene");
     }
 
@@ -268,40 +302,42 @@ public class GameManager : MonoBehaviour
         FMODUnity.RuntimeManager.PlayOneShot(path);
     }
 
-    private void SetMusicImmediate(EventInstance current) //Starts current track and stops others immediately
+    /*private void SetMusicImmediate(EventInstance current) //Starts current track and stops others immediately
     {
         StopMusicImmediate();
         current.start();
-    }
+    }*/
 
-    private void SetMusicFadeOut(EventInstance current) //Starts current track and allows others to fade out
+    private void StartMusic(EventInstance current, STOP_MODE stopMode = STOP_MODE.IMMEDIATE) //Starts current track and determines how to stop other tracks
     {
-        StopMusicFadeOut();
+        StopMusic(stopMode);
         current.start();
     }
-    private void StopMusicImmediate() //Stops music immediately
+    /*private void StopMusicImmediate() //Stops music immediately
     {
         titleMusic.stop(STOP_MODE.IMMEDIATE);
-        menuMusic.stop(STOP_MODE.IMMEDIATE);
         dungeonMusic.stop(STOP_MODE.IMMEDIATE);
         bossMusic.stop(STOP_MODE.IMMEDIATE);
-    }
+        defeatMusic.stop(STOP_MODE.IMMEDIATE);
+        victoryMusic.stop(STOP_MODE.IMMEDIATE);
+    }*/
 
-    private void StopMusicFadeOut() //Allows music to fade out
+    private void StopMusic(STOP_MODE stopMode) //Allows music to fade out
     {
-        titleMusic.stop(STOP_MODE.ALLOWFADEOUT);
-        menuMusic.stop(STOP_MODE.ALLOWFADEOUT);
-        dungeonMusic.stop(STOP_MODE.ALLOWFADEOUT);
-        bossMusic.stop(STOP_MODE.ALLOWFADEOUT);
+        titleMusic.stop(stopMode);
+        dungeonMusic.stop(stopMode);
+        bossMusic.stop(stopMode);
+        defeatMusic.stop(stopMode);
+        victoryMusic.stop(stopMode);
     }
 
     public void PlayDungeonMusic() //Allows Dungeon Music to be started from other scripts
     {
-        SetMusicFadeOut(dungeonMusic);
+        StartMusic(dungeonMusic, STOP_MODE.ALLOWFADEOUT);
     }
 
     public void PlayBossMusic() //Allows Boss Music to be started from other scripts
     {
-        SetMusicFadeOut(bossMusic);
+        StartMusic(bossMusic, STOP_MODE.ALLOWFADEOUT);
     }
 }

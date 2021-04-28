@@ -100,6 +100,29 @@ MonoBehaviour:
     data1: 1135393665
     data2: 3415575635
   Exists: 0
+--- !u!114 &-8611473140834649173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Interface/UI_Select
+  m_EditorClassIdentifier: 
+  Path: event:/Interface/UI_Select
+  guid: 6e943922ede3e443b08a901b9e44f317
+  Banks:
+  - {fileID: 1364052657002804064}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 0
 --- !u!114 &-8563419545051698764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,6 +252,46 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 0
+--- !u!114 &-7818955299360135800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/PlayerHealth
+  m_EditorClassIdentifier: 
+  Name: PlayerHealth
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 1135393665
+    data2: 3415575635
+  Exists: 0
+--- !u!114 &-7692766290512127423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/PlayerHealth
+  m_EditorClassIdentifier: 
+  Name: PlayerHealth
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 1135393665
+    data2: 3415575635
+  Exists: 0
 --- !u!114 &-7581069686722194619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,6 +355,69 @@ MonoBehaviour:
     data1: 1135393665
     data2: 3415575635
   Exists: 0
+--- !u!114 &-7311470657627788685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: snapshot:/Player_MovingRooms
+  m_EditorClassIdentifier: 
+  Path: snapshot:/Player_MovingRooms
+  guid: 9fe31eb43fa5754eaebf54383b99d657
+  Banks:
+  - {fileID: 1364052657002804064}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 0
+--- !u!114 &-7188171403851765712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/BossHealth
+  m_EditorClassIdentifier: 
+  Name: BossHealth
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 527499538
+    data2: 3536465712
+  Exists: 0
+--- !u!114 &-7064007403950840737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/PlayerHealth
+  m_EditorClassIdentifier: 
+  Name: PlayerHealth
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 1135393665
+    data2: 3415575635
+  Exists: 0
 --- !u!114 &-6736869816634995539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,8 +432,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: event:/Interface/SelectionChange
   guid: 6e943922ede3e443b08a901b9e44f317
-  Banks:
-  - {fileID: 1364052657002804064}
+  Banks: []
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -418,6 +543,26 @@ MonoBehaviour:
     data1: 0
     data2: 0
   Exists: 0
+--- !u!114 &-5702132771121940684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/PlayerHealth
+  m_EditorClassIdentifier: 
+  Name: PlayerHealth
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 1135393665
+    data2: 3415575635
+  Exists: 0
 --- !u!114 &-5678167338080805682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -523,7 +668,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
-  Length: 108413
+  Length: 109413
 --- !u!114 &-5242620924180283773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -546,6 +691,26 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 0
+--- !u!114 &-5094632848451785362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/PlayerHealth
+  m_EditorClassIdentifier: 
+  Name: PlayerHealth
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 1135393665
+    data2: 3415575635
+  Exists: 0
 --- !u!114 &-5062478614317572981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -651,7 +816,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
-  Length: 23721
+  Length: 112747
 --- !u!114 &-4865164221069918142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -671,6 +836,49 @@ MonoBehaviour:
   ID:
     data1: 1135393665
     data2: 3415575635
+  Exists: 0
+--- !u!114 &-4864559036398262655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/Music_Victory
+  m_EditorClassIdentifier: 
+  Path: event:/Music/Music_Victory
+  guid: fca8dc65fa37ff46a2428a00da7da7f1
+  Banks:
+  - {fileID: 1364052657002804064}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 173000
+--- !u!114 &-4767377285308888571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/BossHealth
+  m_EditorClassIdentifier: 
+  Name: BossHealth
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 527499538
+    data2: 3536465712
   Exists: 0
 --- !u!114 &-4108421438699686646
 MonoBehaviour:
@@ -772,6 +980,52 @@ MonoBehaviour:
     data1: 0
     data2: 0
   Exists: 0
+--- !u!114 &-3505551433310243912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Game/Game_EnterDoor
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Game/Game_EnterDoor
+  guid: cef58ef99debcf47b90974bad0c7cc7d
+  Banks:
+  - {fileID: 1364052657002804064}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1000
+--- !u!114 &-3072259015364155778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Interface/UI_Confirm
+  m_EditorClassIdentifier: 
+  Path: event:/Interface/UI_Confirm
+  guid: e33f5bce84b4334b91b3003af5f51f94
+  Banks:
+  - {fileID: 1364052657002804064}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 0
 --- !u!114 &-2830130137264726199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -872,7 +1126,107 @@ MonoBehaviour:
     data1: 1135393665
     data2: 3415575635
   Exists: 0
+--- !u!114 &-2193329245373348023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/BossHealth
+  m_EditorClassIdentifier: 
+  Name: BossHealth
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 527499538
+    data2: 3536465712
+  Exists: 0
+--- !u!114 &-2000919844739464666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/BossHealth
+  m_EditorClassIdentifier: 
+  Name: BossHealth
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 527499538
+    data2: 3536465712
+  Exists: 0
+--- !u!114 &-1964980303864390984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/PlayerHealth
+  m_EditorClassIdentifier: 
+  Name: PlayerHealth
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 1135393665
+    data2: 3415575635
+  Exists: 0
 --- !u!114 &-1756533411816780000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/PlayerHealth
+  m_EditorClassIdentifier: 
+  Name: PlayerHealth
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 1135393665
+    data2: 3415575635
+  Exists: 0
+--- !u!114 &-1716934253137096291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/PlayerHealth
+  m_EditorClassIdentifier: 
+  Name: PlayerHealth
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 1135393665
+    data2: 3415575635
+  Exists: 0
+--- !u!114 &-1662134377274808932
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -911,6 +1265,26 @@ MonoBehaviour:
   ID:
     data1: 1135393665
     data2: 3415575635
+  Exists: 0
+--- !u!114 &-1194931368042925215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/BossHealth
+  m_EditorClassIdentifier: 
+  Name: BossHealth
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 527499538
+    data2: 3536465712
   Exists: 0
 --- !u!114 &-1190045200469808819
 MonoBehaviour:
@@ -953,6 +1327,46 @@ MonoBehaviour:
     data2: 3415575635
   Exists: 0
 --- !u!114 &-685218124030502086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/PlayerHealth
+  m_EditorClassIdentifier: 
+  Name: PlayerHealth
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 1135393665
+    data2: 3415575635
+  Exists: 0
+--- !u!114 &-637607290330700016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/PlayerHealth
+  m_EditorClassIdentifier: 
+  Name: PlayerHealth
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 1135393665
+    data2: 3415575635
+  Exists: 0
+--- !u!114 &-581835099716274678
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1031,9 +1445,7 @@ MonoBehaviour:
   - {fileID: 1699275182898590830}
   - {fileID: 1364052657002804064}
   EditorEvents:
-  - {fileID: -6736869816634995539}
   - {fileID: 5085865936701681780}
-  - {fileID: 3555635575707644612}
   - {fileID: -8160513401361948972}
   - {fileID: 1649428147200536070}
   - {fileID: 691981268227617318}
@@ -1059,16 +1471,42 @@ MonoBehaviour:
   - {fileID: 4305086404067553008}
   - {fileID: -4878305595654808489}
   - {fileID: 645627360422864904}
-  - {fileID: 3342869386257794716}
   - {fileID: -5332541436164710329}
   - {fileID: -8563419545051698764}
+  - {fileID: -8611473140834649173}
+  - {fileID: -3072259015364155778}
+  - {fileID: 562032984388289115}
+  - {fileID: -4864559036398262655}
+  - {fileID: 671292607133118432}
+  - {fileID: -7311470657627788685}
+  - {fileID: -3505551433310243912}
   EditorParameters: []
   MasterBanks:
   - {fileID: 1364052657002804064}
   StringsBanks:
   - {fileID: 1699275182898590830}
-  stringsBankWriteTime: 637544566377740477
+  stringsBankWriteTime: 637552168420147230
   cacheVersion: 6
+--- !u!114 &92759276466034087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Music_Boss/BossHealth
+  m_EditorClassIdentifier: 
+  Name: BossHealth
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 0
 --- !u!114 &136817671883476158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1132,6 +1570,69 @@ MonoBehaviour:
     data1: 1135393665
     data2: 3415575635
   Exists: 0
+--- !u!114 &449303618574631745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/BossHealth
+  m_EditorClassIdentifier: 
+  Name: BossHealth
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 527499538
+    data2: 3536465712
+  Exists: 0
+--- !u!114 &482740093424561029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/PlayerHealth
+  m_EditorClassIdentifier: 
+  Name: PlayerHealth
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 1135393665
+    data2: 3415575635
+  Exists: 0
+--- !u!114 &562032984388289115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/Music_Defeat
+  m_EditorClassIdentifier: 
+  Path: event:/Music/Music_Defeat
+  guid: 9a2e8d5300b6154f8b0761884fc87ec6
+  Banks:
+  - {fileID: 1364052657002804064}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 209718
 --- !u!114 &627890630379369302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1174,7 +1675,30 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
-  Length: 95965
+  Length: 141363
+--- !u!114 &671292607133118432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Player/Player_Footsteps
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Player/Player_Footsteps
+  guid: 1d7149e401f40544b8152817857a90a6
+  Banks:
+  - {fileID: 1364052657002804064}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 2000
 --- !u!114 &691981268227617318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1298,7 +1822,7 @@ MonoBehaviour:
   Path: FMOD/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637544566377720765
+  lastModified: 637552168420127517
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -1325,6 +1849,26 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 0
+--- !u!114 &1503146863219525042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/BossHealth
+  m_EditorClassIdentifier: 
+  Name: BossHealth
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 527499538
+    data2: 3536465712
+  Exists: 0
 --- !u!114 &1649428147200536070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1363,12 +1907,32 @@ MonoBehaviour:
   Path: FMOD/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637544566377740477
+  lastModified: 637552168420147230
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 2676
+    Value: 2920
   Exists: 1
+--- !u!114 &1726256861224979323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/PlayerHealth
+  m_EditorClassIdentifier: 
+  Name: PlayerHealth
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 1135393665
+    data2: 3415575635
+  Exists: 0
 --- !u!114 &1787531410284952942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1449,6 +2013,26 @@ MonoBehaviour:
     data1: 1135393665
     data2: 3415575635
   Exists: 0
+--- !u!114 &2147182606287168747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/PlayerHealth
+  m_EditorClassIdentifier: 
+  Name: PlayerHealth
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 1135393665
+    data2: 3415575635
+  Exists: 0
 --- !u!114 &2180165473169603947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1488,6 +2072,46 @@ MonoBehaviour:
   ID:
     data1: 0
     data2: 0
+  Exists: 0
+--- !u!114 &2364792952005878764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/PlayerHealth
+  m_EditorClassIdentifier: 
+  Name: PlayerHealth
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 1135393665
+    data2: 3415575635
+  Exists: 0
+--- !u!114 &2729944139635451260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/BossHealth
+  m_EditorClassIdentifier: 
+  Name: BossHealth
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 527499538
+    data2: 3536465712
   Exists: 0
 --- !u!114 &2743190832064680051
 MonoBehaviour:
@@ -1546,8 +2170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: event:/Music/Music_Menu
   guid: 9a2e8d5300b6154f8b0761884fc87ec6
-  Banks:
-  - {fileID: 1364052657002804064}
+  Banks: []
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -1555,6 +2178,26 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 51718
+--- !u!114 &3526497104445964714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/PlayerHealth
+  m_EditorClassIdentifier: 
+  Name: PlayerHealth
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 1135393665
+    data2: 3415575635
+  Exists: 0
 --- !u!114 &3555635575707644612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1569,8 +2212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: event:/Interface/Confirm
   guid: e33f5bce84b4334b91b3003af5f51f94
-  Banks:
-  - {fileID: 1364052657002804064}
+  Banks: []
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1687,6 +2329,26 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 0
+--- !u!114 &3827253082317350840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/BossHealth
+  m_EditorClassIdentifier: 
+  Name: BossHealth
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 527499538
+    data2: 3536465712
+  Exists: 0
 --- !u!114 &3891188832390994450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1749,6 +2411,68 @@ MonoBehaviour:
   ID:
     data1: 1135393665
     data2: 3415575635
+  Exists: 0
+--- !u!114 &4144056483570540024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/BossHealth
+  m_EditorClassIdentifier: 
+  Name: BossHealth
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 527499538
+    data2: 3536465712
+  Exists: 0
+--- !u!114 &4164693559721343905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Player/Player_EnterDoor
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Player/Player_EnterDoor
+  guid: cef58ef99debcf47b90974bad0c7cc7d
+  Banks: []
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1000
+--- !u!114 &4192781445797846273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/BossHealth
+  m_EditorClassIdentifier: 
+  Name: BossHealth
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 527499538
+    data2: 3536465712
   Exists: 0
 --- !u!114 &4250510875533590363
 MonoBehaviour:
@@ -1815,7 +2539,47 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 0
+--- !u!114 &4404408660495805158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/PlayerHealth
+  m_EditorClassIdentifier: 
+  Name: PlayerHealth
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 1135393665
+    data2: 3415575635
+  Exists: 0
 --- !u!114 &4466235448351451561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/PlayerHealth
+  m_EditorClassIdentifier: 
+  Name: PlayerHealth
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 1135393665
+    data2: 3415575635
+  Exists: 0
+--- !u!114 &4571791883562044544
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1854,6 +2618,26 @@ MonoBehaviour:
   ID:
     data1: 1135393665
     data2: 3415575635
+  Exists: 0
+--- !u!114 &4651007645065997815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/BossHealth
+  m_EditorClassIdentifier: 
+  Name: BossHealth
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 527499538
+    data2: 3536465712
   Exists: 0
 --- !u!114 &5070239868964863709
 MonoBehaviour:
@@ -1924,6 +2708,66 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 0
+--- !u!114 &5370986190547872909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/PlayerHealth
+  m_EditorClassIdentifier: 
+  Name: PlayerHealth
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 1135393665
+    data2: 3415575635
+  Exists: 0
+--- !u!114 &5480045511963955839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/BossHealth
+  m_EditorClassIdentifier: 
+  Name: BossHealth
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 527499538
+    data2: 3536465712
+  Exists: 0
+--- !u!114 &6291801284165837430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/BossHealth
+  m_EditorClassIdentifier: 
+  Name: BossHealth
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 527499538
+    data2: 3536465712
+  Exists: 0
 --- !u!114 &6548657335960425936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1943,6 +2787,26 @@ MonoBehaviour:
   ID:
     data1: 1135393665
     data2: 3415575635
+  Exists: 0
+--- !u!114 &7249861859294500274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/BossHealth
+  m_EditorClassIdentifier: 
+  Name: BossHealth
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 527499538
+    data2: 3536465712
   Exists: 0
 --- !u!114 &7697006835103411988
 MonoBehaviour:
@@ -2005,6 +2869,26 @@ MonoBehaviour:
   ID:
     data1: 1135393665
     data2: 3415575635
+  Exists: 0
+--- !u!114 &8161511421464969416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/BossHealth
+  m_EditorClassIdentifier: 
+  Name: BossHealth
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 527499538
+    data2: 3536465712
   Exists: 0
 --- !u!114 &8195119734347910754
 MonoBehaviour:

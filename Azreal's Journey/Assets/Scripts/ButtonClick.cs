@@ -14,7 +14,7 @@ public class ButtonClick : MonoBehaviour
     void Start()
     {
         button = GetComponent<Button>();
-        button.onClick.AddListener(() => PlayAudio("event:/Interface/Confirm"));
+        button.onClick.AddListener(() => PlayAudio("event:/Interface/UI_Confirm"));
     }
 
     // Update is called once per frame
@@ -31,7 +31,7 @@ public class ButtonClick : MonoBehaviour
                 button.onClick.Invoke();
 
             if (selected && !prevSelected) //Button was selected
-                PlayAudio("event:/Interface/SelectionChange");
+                PlayAudio("event:/Interface/UI_Select");
         }
 
         prevSelected = selected; //Updates previous value
