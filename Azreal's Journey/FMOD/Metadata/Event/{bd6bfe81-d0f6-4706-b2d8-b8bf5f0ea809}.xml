@@ -87,6 +87,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{6b1524c7-549f-4587-a149-14fa9ddae3b1}">
+		<property name="volume">
+			<value>-5</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{75eb1a66-8ffc-4e24-bf0d-39f0d567005a}</destination>
 		</relationship>
@@ -149,7 +152,7 @@
 			<value>pitch</value>
 		</property>
 		<property name="amount">
-			<value>6.25</value>
+			<value>4.16666698</value>
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{1d2b6362-36d1-4a46-991a-c2127188902c}" />

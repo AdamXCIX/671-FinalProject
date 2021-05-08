@@ -636,6 +636,8 @@ public class Player : Character
         else if (other.tag == "End") //Player reaches the end of the game
         {
             hasWon = true;
+            if (IsAudioPlaying(lowHealthSound)) //Stop heartbeat sound when game ends
+                lowHealthSound.stop(STOP_MODE.IMMEDIATE);
         }
     }
 
@@ -648,6 +650,9 @@ public class Player : Character
         {
             health = 0;
             isDead = true;
+
+            if (IsAudioPlaying(lowHealthSound)) //Stop heartbeat sound when dead
+                lowHealthSound.stop(STOP_MODE.IMMEDIATE);
         }
         else //Raises or lowers health
             health += value;
@@ -657,7 +662,7 @@ public class Player : Character
             lowHealthSound.start();
         else if (health / maxHealth > 0.5f && IsAudioPlaying(lowHealthSound)) //Fade sound out when health rises above 50%
             lowHealthSound.stop(STOP_MODE.ALLOWFADEOUT);
-        else if (isDead && IsAudioPlaying(lowHealthSound)) //Stop sound when dead
+        else if (GameManager.instance.State != GameState.Game && IsAudioPlaying(lowHealthSound)) //Stop sound when not in game
             lowHealthSound.stop(STOP_MODE.IMMEDIATE);
     }
 

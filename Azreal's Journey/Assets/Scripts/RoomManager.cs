@@ -108,7 +108,6 @@ public class RoomManager : MonoBehaviour
                             }
                         }
 
-                        Debug.Log("Boss Current: " + bossCurrentHealth + "\nBoss Max: " + bossMaxHealth);
                         //Sets boss health variable of GameManager
                         if (bossMaxHealth > 0)
                             GameManager.instance.BossHealthPercent = bossCurrentHealth / bossMaxHealth;

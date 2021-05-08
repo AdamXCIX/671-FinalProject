@@ -81,10 +81,13 @@
 			<destination>{55bdcf4c-8837-43d8-a932-2dffc1deddb2}</destination>
 		</relationship>
 		<relationship name="markers">
-			<destination>{c69d94d2-46af-49f1-b4b4-65a4ad52e7cc}</destination>
+			<destination>{554b08f8-a17a-46c2-9d9c-fa7bdf40a5de}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{e7e2eccb-c5e1-4c6e-9ecc-cd5d3ae9c8f3}">
+		<property name="volume">
+			<value>-7.5</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{7968fc26-3083-4457-af83-2d2f64101e55}</destination>
 		</relationship>
@@ -102,12 +105,14 @@
 	</object>
 	<object class="MixerBusPanner" id="{c0125ce9-341d-467b-b2f7-a0ace93f89a6}" />
 	<object class="SoundScatterer" id="{272181dd-9338-4a76-9af2-127ab10e6e13}">
-		<property name="name" />
 		<property name="minimumTimeBetweenSounds">
 			<value>250</value>
 		</property>
 		<property name="maximumTimeBetweenSounds">
 			<value>250</value>
+		</property>
+		<property name="spawnRate">
+			<value>112.5</value>
 		</property>
 		<property name="minimumScatterDistance">
 			<value>0</value>
@@ -116,7 +121,7 @@
 			<value>0</value>
 		</property>
 		<property name="pitchRandomization">
-			<value>3</value>
+			<value>2</value>
 		</property>
 		<relationship name="sound">
 			<destination>{611e69b3-f15c-4b50-815f-e79cae27a571}</destination>
@@ -155,12 +160,12 @@
 			<destination>{e7e2eccb-c5e1-4c6e-9ecc-cd5d3ae9c8f3}</destination>
 		</relationship>
 	</object>
-	<object class="LoopRegion" id="{c69d94d2-46af-49f1-b4b4-65a4ad52e7cc}">
+	<object class="LoopRegion" id="{554b08f8-a17a-46c2-9d9c-fa7bdf40a5de}">
 		<property name="position">
 			<value>0</value>
 		</property>
 		<property name="length">
-			<value>1.0000000000000002</value>
+			<value>1.0000000000000004</value>
 		</property>
 		<relationship name="timeline">
 			<destination>{5964638f-d328-46fc-8791-91199a2ac8fe}</destination>

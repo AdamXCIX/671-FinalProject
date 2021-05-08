@@ -71,6 +71,11 @@ public class GameManager : MonoBehaviour
         set { bossHealthPercent = value; }
     }
 
+    public GameState State 
+    { 
+        get { return state; }
+    }
+
     private void Awake()
     {
         if (instance == null) //Assigns this GameObject to instance if instance is null
@@ -210,7 +215,8 @@ public class GameManager : MonoBehaviour
     public void GameOver() //Game Over Screen
     {
         StopMusic(STOP_MODE.IMMEDIATE);
-        PlayAudio("event:/SFX/Game/Game_Defeat");
+        StopSFX(STOP_MODE.IMMEDIATE);
+        PlayAudio("event:/Interface/Game_Defeat");
         state = GameState.GameOver;
 
         mainMenu.SetActive(false);
@@ -249,7 +255,8 @@ public class GameManager : MonoBehaviour
     public void Win() //Win Screen
     {
         StopMusic(STOP_MODE.IMMEDIATE);
-        PlayAudio("event:/SFX/Game/Game_Victory");
+        StopSFX(STOP_MODE.IMMEDIATE);
+        PlayAudio("event:/Interface/Game_Victory");
         state = GameState.Win;
 
         mainMenu.SetActive(false);
@@ -294,6 +301,7 @@ public class GameManager : MonoBehaviour
     {
         StopMusic(STOP_MODE.IMMEDIATE);
         SceneManager.LoadScene("GameScene");
+
     }
 
     //------------------------Audio------------------------
@@ -313,22 +321,11 @@ public class GameManager : MonoBehaviour
         StopMusic(stopMode);
         current.start();
     }
-    /*private void StopMusicImmediate() //Stops music immediately
-    {
-        titleMusic.stop(STOP_MODE.IMMEDIATE);
-        dungeonMusic.stop(STOP_MODE.IMMEDIATE);
-        bossMusic.stop(STOP_MODE.IMMEDIATE);
-        defeatMusic.stop(STOP_MODE.IMMEDIATE);
-        victoryMusic.stop(STOP_MODE.IMMEDIATE);
-    }*/
 
-    private void StopMusic(STOP_MODE stopMode) //Allows music to fade out
+    private void StopMusic(STOP_MODE stopMode = STOP_MODE.IMMEDIATE) //Stops music depending on passed stop mode
     {
-        titleMusic.stop(stopMode);
-        dungeonMusic.stop(stopMode);
-        bossMusic.stop(stopMode);
-        defeatMusic.stop(stopMode);
-        victoryMusic.stop(stopMode);
+        Bus musicBus = FMODUnity.RuntimeManager.GetBus("bus:/Music");
+        musicBus.stopAllEvents(stopMode);
     }
 
     public void PlayDungeonMusic() //Allows Dungeon Music to be started from other scripts
@@ -339,5 +336,11 @@ public class GameManager : MonoBehaviour
     public void PlayBossMusic() //Allows Boss Music to be started from other scripts
     {
         StartMusic(bossMusic, STOP_MODE.ALLOWFADEOUT);
+    }
+
+    public void StopSFX(STOP_MODE stopMode = STOP_MODE.IMMEDIATE) //Stops all sound effects
+    {
+        Bus sfxBus = FMODUnity.RuntimeManager.GetBus("bus:/SFX");
+        sfxBus.stopAllEvents(stopMode);
     }
 }

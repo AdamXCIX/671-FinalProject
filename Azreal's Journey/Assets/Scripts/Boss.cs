@@ -6,6 +6,7 @@ public class Boss : RangedEnemy
 {
     private GameObject player;
     [SerializeField] private float shotSpreadAngle;
+    [SerializeField] private float speedModifier;
 
     // Start is called before the first frame update
     protected override void Start()
@@ -48,13 +49,21 @@ public class Boss : RangedEnemy
                     if (FacingWall(halfWidthX + 0.05f, halfWidthY + 0.05f)) //Prevents enemy from walking into walls
                         SetRandomDirection(); //Ensures new direction does not have wall
 
-                    Move(walkSpeed);
+                    if (health <= MaxHealth / 2.0f) //Boss becomes more aggressive when at half health or less
+                        Move(walkSpeed * speedModifier);
+                    else
+                        Move(walkSpeed);
 
                     if (keepHoldingState)
                         ChangeEnemyState(EnemyState.Wander);
                     else
                     {
-                        int value = GenerateWeightedRandom(new int[] { 2, 1 });
+                        int value;
+                        if (health <= MaxHealth / 2.0f) //Boss becomes more aggressive when at half health or less
+                            value = GenerateWeightedRandom(new int[] { 3, 1 });
+                        else
+                            value = GenerateWeightedRandom(new int[] { 1, 1 });
+
                         if (value == 0)
                             ChangeEnemyState(EnemyState.RangedAtk);
                         else
@@ -64,8 +73,17 @@ public class Boss : RangedEnemy
 
                 //Enemy is using ranged attack
                 case EnemyState.RangedAtk:
-                    RangedAttack();
-                    ChangeEnemyState(EnemyState.Wander);
+                    if (state != prevState)
+                    {
+                        StartCoroutine(HoldCurrentState(idleDuration)); //Determines when enemy should exit state
+                        RangedAttack();
+                    }
+                    
+
+                    if (keepHoldingState)
+                        ChangeEnemyState(EnemyState.RangedAtk);
+                    else
+                        ChangeEnemyState(EnemyState.Wander);
 
                     break;
             }
